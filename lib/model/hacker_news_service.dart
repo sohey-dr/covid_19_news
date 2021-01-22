@@ -3,17 +3,15 @@ import 'dart:convert';
 import 'package:covid_news/model/news_entry.dart';
 import 'package:http/http.dart' as http;
 
-const defaultBaseUrl = 'https://api.hnpwa.com/v0';
 
 class HackerNewsService {
-  final String _baseUrl = defaultBaseUrl;
 
   // Store the last feed in memory to instantly load when requested.
   String _cacheFeedKey;
   List<NewsEntry> _cacheFeedResult;
 
   Future<List<NewsEntry>> getNewsEntries(int page) async {
-    final url = '$_baseUrl/news/$page.json';
+    final url = 'https://crawlers-hey.herokuapp.com/api/v1/newsses.json';
     if (_cacheFeedKey == url) {
       return _cacheFeedResult;
     }
